@@ -1,2 +1,2 @@
 # to-do-application-backend
-A backend api to serve the to-do-application repository using JAVA and the serverless framework.
+A backend api to serve the to-do-application repository using Java and the serverless framework.
