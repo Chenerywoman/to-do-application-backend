@@ -19,5 +19,5 @@ functions:
     events:
 #      - httpApi:
       - http:
-          path: tasks
+          path: /users/{userId}/tasks
           method: get
