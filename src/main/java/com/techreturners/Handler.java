@@ -23,20 +23,25 @@ public class Handler implements RequestHandler<APIGatewayProxyRequestEvent, APIG
 
 		// this is returned when run serverless -f tasks.api
 		LOG.info("request received: {}");
-//		Response responseBody = new Response("Hello World!", input);
 
-		Task t1 = new Task("abc123", "Pick up newspapers", false );
-		Task t2 = new Task("abc1234" , "Learn Java!", false);
+		String userId = request.getPathParameters().get("userId");
+
+		List<Task> tasks = new ArrayList<>();
+
+		if (userId.equals("abc123")){
+			Task t1 = new Task("abc123", "Pick up newspapers", false );
+			tasks.add(t1);
+		} else {
+			Task t2 = new Task("abc1234" , "Learn Java!", false);
+			tasks.add(t2);
+		}
+
 
 /*		// generating an error - to check logs
 
 		Task t3 = null;
 		System.out.println(t3.getDescription());
 */
-		List<Task> tasks = new ArrayList<>();
-		tasks.add(t1);
-		tasks.add(t2);
-
 
 		APIGatewayProxyResponseEvent response = new APIGatewayProxyResponseEvent();
 		response.setStatusCode(200);
