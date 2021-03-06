@@ -1,10 +1,12 @@
 package com.techreturners;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techreturners.model.Task;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,15 +14,15 @@ import org.apache.logging.log4j.Logger;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
-public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayResponse> {
+public class Handler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
 	private static final Logger LOG = LogManager.getLogger(Handler.class);
 
 	@Override
-	public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
+	public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
 
 		// this is returned when run serverless -f tasks.api
-		LOG.info("request received: {}", input);
+		LOG.info("request received: {}");
 //		Response responseBody = new Response("Hello World!", input);
 
 		Task t1 = new Task("abc123", "Pick up newspapers", false );
@@ -36,11 +38,23 @@ public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayRe
 		tasks.add(t2);
 
 
-		// builder will convert to JSON to send the response
-		return ApiGatewayResponse.builder()
-				.setStatusCode(200)
-				.setObjectBody(tasks)
-				.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
-				.build();
+		APIGatewayProxyResponseEvent response = new APIGatewayProxyResponseEvent();
+		response.setStatusCode(200);
+
+		// cannot put tasks array list straight into the response;
+		// need to use ObjectMapper dependency to change to a JSON object
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		// need to have in a try catch, or code will error
+		try {
+			// sets the tasks Array to a string (json) object
+			String responseBody = objectMapper.writeValueAsString(tasks);
+			// adds json string responseBody to the body of the response
+			response.setBody(responseBody);
+
+		} catch (JsonProcessingException error){
+			LOG.error("Unable to marshal tasks array");
+		}
+		return response;
 	}
 }
