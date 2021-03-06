@@ -1,4 +1,9 @@
 # ignore target folder as can be created with mvn install
-
 target/
+
+# ignore .serverless folder as can be created by running serverless deploy
+.serverless/
+
+# ignore hello.iml as set up from template when function called hello (changed to tasks-api) & also .iml files can be recreated
+*.iml
 
