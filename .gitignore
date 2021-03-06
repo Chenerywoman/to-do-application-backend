@@ -1,0 +1,4 @@
+# ignore target folder as can be created with mvn install
+
+./target/
+
