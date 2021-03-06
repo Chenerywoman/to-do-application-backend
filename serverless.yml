@@ -15,7 +15,7 @@ package:
 
 functions:
   tasks-api:
-    handler: com.serverless.Handler
+    handler: com.techreturners.Handler
     events:
 #      - httpApi:
       - http:
