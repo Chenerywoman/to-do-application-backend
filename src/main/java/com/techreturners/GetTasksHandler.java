@@ -14,15 +14,21 @@ import org.apache.logging.log4j.Logger;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
-public class Handler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+public class GetTasksHandler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
-	private static final Logger LOG = LogManager.getLogger(Handler.class);
+	private static final Logger LOG = LogManager.getLogger(GetTasksHandler.class);
 
 	@Override
 	public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
 
 		// this is returned when run serverless -f tasks.api
 		LOG.info("request received: {}");
+
+		/* if want to use one handler for two methods:
+			String requestMethod = request.getHttpMethod();
+			e.g. GET or POST
+			if post - save task, else get tasks
+		*/
 
 		String userId = request.getPathParameters().get("userId");
 
