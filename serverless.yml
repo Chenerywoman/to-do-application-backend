@@ -20,3 +20,9 @@ functions:
       - http:
           path: /users/{userId}/tasks
           method: get
+  save-tasks-java-api:
+    handler: com.techreturners.SaveTasksHandler
+    events:
+      - http:
+          path: /users/{userId}/tasks
+          method: post
