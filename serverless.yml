@@ -11,10 +11,10 @@ provider:
     shouldStartNameWithService: true
 
 package:
-  artifact: target/hello-dev.jar
+  artifact: target/tasks-java-api-dev.jar
 
 functions:
-  tasks-api:
+  tasks-java-api:
     handler: com.techreturners.Handler
     events:
 #      - httpApi:
