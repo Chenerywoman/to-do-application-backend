@@ -6,6 +6,9 @@ public class Task {
     private String description;
     private boolean completed;
 
+    // default constructor to use with object mapper in SaveTasksHandler
+    public Task(){};
+
     public Task(String taskId, String description, boolean completed) {
         this.taskId = taskId;
         this.description = description;
