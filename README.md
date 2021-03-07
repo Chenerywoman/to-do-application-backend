@@ -13,9 +13,9 @@ To set up the project code:
 * Add the serverless credentials to the .aws/credentials file [add serverless credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/#setup-with-serverless-config-credentials-command)
   `serverless config credentials --provider aws --key AKIAIOSFODNN7EXAMPLE --secret wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY --profile serverless`
 * When you input `cat ~/.aws/credentials`, it should output
-  `[serverless]`
-  `aws_access_key_id=AKIAIOSFODNN7EXAMPLE`
-  `aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`
+  `[serverless]`\
+  `aws_access_key_id=AKIAIOSFODNN7EXAMPLE`\
+  `aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`\
 
 To build & deploy:
 * `mvn install`
