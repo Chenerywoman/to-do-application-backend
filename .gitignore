@@ -7,3 +7,4 @@ target/
 # ignore hello.iml as set up from template when function called hello (changed to tasks-api) & also .iml files can be recreated
 *.iml
 
+config.dev.json
