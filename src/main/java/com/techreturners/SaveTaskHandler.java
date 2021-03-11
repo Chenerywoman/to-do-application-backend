@@ -15,9 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class SaveTasksHandler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+public class SaveTaskHandler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
-	private static final Logger LOG = LogManager.getLogger(SaveTasksHandler.class);
+	private static final Logger LOG = LogManager.getLogger(SaveTaskHandler.class);
 
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
