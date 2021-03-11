@@ -25,9 +25,18 @@ functions:
       - http:
           path: /users/{userId}/tasks
           method: get
-  save-tasks-java-api:
+          cors: true
+  save-task-java-api:
     handler: com.techreturners.SaveTasksHandler
     events:
       - http:
           path: /users/{userId}/tasks
           method: post
+          cors: true
+  delete-task-java-api:
+    handler: com.techreturners.DeleteTaskHandler
+    events:
+      - http:
+          path: /users/{userId}/task/{taskId}
+          method: delete
+          cors: true
