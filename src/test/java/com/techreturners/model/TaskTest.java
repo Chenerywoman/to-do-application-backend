@@ -35,6 +35,14 @@ public class TaskTest {
         assertTrue(t.isCompleted(), "Task status was not true");
     }
 
+    @Test
+    @DisplayName("Test task id")
+    public void testTaskId() {
+        Task t = new Task("abc123", "Some task description", false);
+
+        assertEquals("abc123", t.getTaskId(), "Task ID was incorrect");
+    }
+
 
 }
 
