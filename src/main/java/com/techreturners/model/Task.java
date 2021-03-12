@@ -4,7 +4,7 @@ public class Task {
 
     private String taskId;
     private String description;
-    private boolean completed;
+    private Boolean completed = false;
 
     // default constructor to use with object mapper in SaveTasksHandler
     public Task(){};
