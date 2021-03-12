@@ -2,12 +2,11 @@ package com.techreturners.model;
 
 //import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapters;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
 import org.junit.jupiter.api.Test;
 // give human readable name to test
 import org.junit.jupiter.api.DisplayName;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TaskTest {
 
@@ -26,6 +25,14 @@ public class TaskTest {
         Task t = new Task("abc123", "Some Description");
         // expected, actual, message if it fails
         assertFalse(t.isCompleted(), "Task status was not false by default");
+    }
+
+    @Test
+    @DisplayName("Check completed is false by default")
+    public void testCompletedStatusTrue(){
+        Task t = new Task("abc123", "Some Description", true);
+        // expected, actual, message if it fails
+        assertTrue(t.isCompleted(), "Task status was not false by default");
     }
 }
 
