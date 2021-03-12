@@ -23,7 +23,7 @@ public class TaskTest {
     @Test
     @DisplayName("Check completed is false by default")
     public void testDefaultCompletedStatus(){
-        Task t = new Task();
+        Task t = new Task("abc123", "Some Description");
         // expected, actual, message if it fails
         assertFalse(t.isCompleted(), "Task status was not false by default");
     }

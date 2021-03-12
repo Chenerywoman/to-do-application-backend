@@ -4,10 +4,16 @@ public class Task {
 
     private String taskId;
     private String description;
-    private Boolean completed = false;
+    private boolean completed;
 
     // default constructor to use with object mapper in SaveTasksHandler
     public Task(){};
+
+    public Task(String taskId, String description) {
+        this.taskId = taskId;
+        this.description = description;
+        this.completed = false;
+    }
 
     public Task(String taskId, String description, boolean completed) {
         this.taskId = taskId;
