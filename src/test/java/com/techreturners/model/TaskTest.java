@@ -32,7 +32,9 @@ public class TaskTest {
     public void testCompletedStatusTrue(){
         Task t = new Task("abc123", "Some Description", true);
         // expected, actual, message if it fails
-        assertTrue(t.isCompleted(), "Task status was not false by default");
+        assertTrue(t.isCompleted(), "Task status was not true");
     }
+
+
 }
 
