@@ -60,7 +60,6 @@ public class DeleteTaskHandler implements RequestHandler<APIGatewayProxyRequestE
 
             preparedStatement.execute();
 
-            // is this needed as close connection below?
             connection.close();
 
         } catch (ClassNotFoundException error){
