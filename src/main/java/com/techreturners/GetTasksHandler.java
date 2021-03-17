@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
@@ -82,6 +84,9 @@ public class GetTasksHandler implements RequestHandler<APIGatewayProxyRequestEve
 
 
 		APIGatewayProxyResponseEvent response = new APIGatewayProxyResponseEvent();
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Access-Control-Allow-Origin", "*");
+        response.setHeaders(headers);
         response.setStatusCode(200);
 
         // cannot put tasks array list straight into the response;
